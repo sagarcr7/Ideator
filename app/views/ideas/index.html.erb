@@ -1,1 +1,27 @@
-<h1>This is my first app ever and I’m super excited to become a coder</h1>
+<button >
+  Add Idea
+</button >
+<%= simple_form_for Idea.new do |f| %>
+  <%= f.input :description %>
+  <%= f.input :author %>
+  <%= f.submit 'Submit' %>
+<% end %>
+
+
+<% @ideas.each do |idea| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <blockquote>
+        <p><%= idea.description %></p>
+        <small>by <%= idea.author %></small>
+      </blockquote>
+      <br>
+      <%= link_to 'Delete', idea_path(idea), method: :delete, class: 'btn btn-sm btn-danger', data: {confirm: "Are you sure?"} %>
+      <%= link_to 'Revise', edit_idea_path(idea) class: 'btn btn-sm btn-success' %>
+    </div>
+  </div>
+<% end %>
+
+<div class = "text-center">
+  <%= will_paginate @ideas %>
+</div>
