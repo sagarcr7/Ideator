@@ -26,7 +26,7 @@ class IdeasController < ApplicationController
     	end
   	end
 
-  def destroy
+  def destroys
     @idea = Idea.find(params[:id])
     @idea.destroy
     flash[:success] = "The idea was successfully deleted!"
